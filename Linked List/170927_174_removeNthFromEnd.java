@@ -1,3 +1,9 @@
+/*
+找到单链表倒数第n个节点，保证链表中节点的最少数量为n。
+Example：
+给出链表 3->2->1->5->null和n = 2，返回倒数第二个节点的值1.
+*/
+
 /**
  * Definition for ListNode.
  * public class ListNode {
