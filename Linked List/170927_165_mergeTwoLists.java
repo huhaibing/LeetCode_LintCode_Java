@@ -17,6 +17,8 @@ public class Solution {
      * @param l2: ListNode l2 is the head of the linked list
      * @return: ListNode head of linked list
      */
+	 
+	 /*==========方法一：基本插入==========*/
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         // write your code here
         ListNode head = new ListNode(0);
@@ -41,7 +43,30 @@ public class Solution {
             temp.next = templ1;
             templ1.next = l2;
         }
-        
         return head.next;
+    }
+	
+	/*==========方法二：递归==========*/
+	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        // write your code here
+        ListNode dummy = new ListNode(0);
+        ListNode head = dummy;
+        /*l1空，返回l2；l2空，返回l1*/
+        if (l1 == null)
+            return l2;
+        if (l2 == null)
+            return l1;
+        else {
+            if (l1.val <= l2.val){
+                head.next = l1;
+                head = head.next;
+                head.next = mergeTwoLists(l1.next, l2); //递归
+            } else {
+                head.next = l2;
+                head = head.next;
+                head.next = mergeTwoLists(l1, l2.next);
+            }
+        }
+        return dummy.next;
     }
 }
