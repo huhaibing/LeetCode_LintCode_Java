@@ -10,17 +10,31 @@ public class Solution {
      * @param nums: An ineger array
      * @return: An integer
      */
-    public int removeDuplicates(int[] nums) {
-		List<Integer> dnums = new ArrayList<>();
-		for (int n : nums) {
-			if (!dnums.contains(n))
-				dnums.add(n);
+	/*------方法一------*/
+	public int removeDuplicates(int[] nums) {
+		int i=0;
+		if (nums.length == 0)
+			return 0;
+		for (int j=0; j<nums.length; j++) {
+			if (nums[j] != nums[i])
+				nums[++i] = nums[j];
 		}
-		for (int i=0; i<dnums.size(); i++) {
-			nums[i] = dnums.get(i);
-		}
-		return dnums.size();
+		System.out.println(Arrays.toString(nums));
+		return i+1;
 	}
-    
-    
+	
+	// /*------方法二------*/
+    // public int removeDuplicates(int[] nums) {
+		// List<Integer> dnums = new ArrayList<>();
+		// for (int n : nums) {
+			// if (!dnums.contains(n))
+				// dnums.add(n);
+		// }
+		// for (int i=0; i<dnums.size(); i++) {
+			// nums[i] = dnums.get(i);
+		// }
+		// return dnums.size();
+	// }
+	
+	
 }
