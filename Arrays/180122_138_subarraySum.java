@@ -18,14 +18,8 @@ public class Solution {
         // write your code here
 		List<Integer> res = new ArrayList<Integer>();
 		for (int i=0; i<nums.length; i++) {
-			if (nums[i] == 0) {
-				res.add(i);
-				res.add(i);
-				return res;
-			}
 			int sum = 0;
-			sum += nums[i];
-			for (int j=i+1; j<nums.length; j++) {
+			for (int j=i; j<nums.length; j++) {
 				sum += nums[j];
 				if (sum == 0) {
 					res.add(i);
