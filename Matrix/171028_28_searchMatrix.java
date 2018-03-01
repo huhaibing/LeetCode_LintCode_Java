@@ -13,35 +13,18 @@ public class Solution {
      * @return: a boolean, indicate whether matrix contains target
      */
     public boolean searchMatrix(int[][] matrix, int target) {
-		if (matrix == null || matrix.length==0)
+		if (matrix == null || matrix.length == 0)
 			return false;
-		int m=matrix.length, n=matrix[0].length, s=0, e=m*n;
-		
-		if (e == 1 && matrix[0][0] == target)
-			return true;
-		else if (e == 1 && matrix[0][0] != target)
-			return false;
-		while (s+1 < e) {
-			int mid = (s+e)/2;
-			int i=(mid%n==0 ? mid/n-1 : mid/n), j=(mid%n==0 ? n-1 : mid%n-1);
-			if (matrix[i][j] == target) {
+		int row = 0, col = matrix[0].length-1;
+		while (row <= matrix.length-1 && col >= 0) {
+			if (matrix[row][col] == target)
 				return true;
-			} else if (matrix[i][j] > target) {
-				e = mid;
-			} else if (matrix[i][j] < target){
-				s = mid;
-			} 
+			else if (matrix[row][col] < target) {
+				row++;
+			} else if (matrix[row][col] > target) {
+				col--;
+			}
 		}
-		
-		//头尾处理
-		int i=(s%n==0 ? s/n-1 : s/n), j=(s%n==0 ? n-1 : s%n-1);
-		if (matrix[i][j] == target)
-			return true;
-		i=(e%n==0 ? e/n-1 : e/n);
-		j=(e%n==0 ? n-1 : e%n-1);
-		if (matrix[i][j] == target)
-			return true;
-		
 		return false;
-    }
+	}
 }
